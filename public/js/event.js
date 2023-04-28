@@ -23,12 +23,13 @@
 
 	//on submit handler
 	$("#eventform").on("submit", (e) => {
+		e.preventDefault();
+
 		if (!isLoggedin()) {
 			alert("you are not logged in!");
 			return;
 		}
 
-		e.preventDefault();
 		setLoading();
 
 		const data = new FormData(e.currentTarget);

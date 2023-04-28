@@ -4,13 +4,21 @@ function setHeaderButton() {
 	if (isLoggedin()) {
 		const username = getUserName();
 		headerBtn.innerText = username;
-		headerBtn.onclick = function (params) {};
+		headerBtn.onclick = function (params) {
+			//logging out
+			localStorage.removeItem("token");
+			localStorage.removeItem("name");
+			window.location.reload();
+		};
 	} else {
 		headerBtn.innerText = "Login / Sign Up";
 
 		headerBtn.onclick = function (params) {
 			window.location = "/login.html";
 		};
+
+		localStorage.removeItem("token");
+		localStorage.removeItem("name");
 	}
 }
 
