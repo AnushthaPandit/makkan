@@ -73,8 +73,8 @@
 						
 							<a href="product.html" class="nav-item nav-link">Product</a>
 						</div>
-						<a href="" class="btn btn-primary px-3 d-none d-lg-flex"
-							>Login / Sign Up</a
+						<button href="" id="header-login-btn" class="btn btn-primary px-3 d-none d-lg-flex"
+							>Login / Sign Up</
 						>
 					</div>
 				</nav>
@@ -118,20 +118,22 @@
 				data-wow-delay="0.1s"
 				style="padding: 35px"
 			>
-				<div class="container">
+				<form id="event-search-form" class="container">
 					<div class="d-flex justify-content-center col">
 						<div class="mx-2 col-5">
 							<input
-								type="text"
+								type="number"
+								id="search-zipcode"
 								class="form-control border-0 py-3"
 								placeholder="Search Zipcode"
+								required
 							/>
 						</div>
 						<div class="mx-2 col-3">
-							<button class="btn btn-dark border-0 w-100 py-3">Search</button>
+							<button type="submit" id="event-search-btn" class="btn btn-dark border-0 w-100 py-3">Search</button>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 			<!-- Search End -->
 
@@ -346,417 +348,7 @@
 								
 							</div>
 						</div>
-						<div id="tab-2" class="tab-pane fade show p-0">
-							<div class="row g-4">
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-1.jpg" alt=""
-											/></a>
-											
-										</div>
-										<div class="p-4 pb-0">
-											<h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-2.jpg" alt=""
-											/></a>
-											
-											<div
-												class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-											>
-												Villa
-											</div>
-										</div>
-										<div class="p-4 pb-0">
-											<h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-3.jpg" alt=""
-											/></a>
-											
-										</div>
-										<div class="p-4 pb-0">
-											<h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-4.jpg" alt=""
-											/></a>
-											
-										</div>
-										<div class="p-4 pb-0">
-											<h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-5.jpg" alt=""
-											/></a>
-											
-										</div>
-										<div class="p-4 pb-0">
-											<h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-6.jpg" alt=""
-											/></a>
-											
-										</div>
-										<div class="p-4 pb-0">
-											<h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						<div id="tab-3" class="tab-pane fade show p-0">
-							<div class="row g-4">
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-1.jpg" alt=""
-											/></a>
-											
-										</div>
-										<div class="p-4 pb-0">
-											<h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-2.jpg" alt=""
-											/></a>
-											
-										</div>
-										<div class="p-4 pb-0">
-											<h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-3.jpg" alt=""
-											/></a>
-											
-										</div>
-										<div class="p-4 pb-0">
-											<h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-4.jpg" alt=""
-											/></a>
-											g
-											</div> 
-										</div>
-										<div class="p-4 pb-0">
-                                            <h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-5.jpg" alt=""
-											/></a>
-											
-										</div>
-										<div class="p-4 pb-0">
-											<h6 class="text-primary mb-3">By S.C.Dutt</h6>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6">
-									<div class="property-item rounded overflow-hidden">
-										<div class="position-relative overflow-hidden">
-											<a href=""
-												><img class="img-fluid" src="img/property-6.jpg" alt=""
-											/></a>
-											
-										</div>
-										<div class="p-4 pb-0">
-											<h5 class="text-primary mb-3">$12,345</h5>
-											<a class="d-block h5 mb-2" href=""
-												>Golden Urban House For Sell</a
-											>
-											<p>
-												<i class="fa fa-map-marker-alt text-primary me-2"></i
-												>123 Street, New York, USA
-											</p>
-										</div>
-										<div class="d-flex border-top">
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-ruler-combined text-primary me-2"></i
-												>1000 Sqft</small
-											>
-											<small class="flex-fill text-center border-end py-2"
-												><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
-											>
-											<small class="flex-fill text-center py-2"
-												><i class="fa fa-bath text-primary me-2"></i>2
-												Bath</small
-											>
-										</div>
-									</div>
-								</div>
-								
-							</div>
+						
 						</div>
 					</div>
 				</div>
@@ -957,7 +549,7 @@
 			aria-hidden="true"
 		>
 			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
+				<form id="eventform" class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLongTitle">Add Property</h5>
 						<button
@@ -970,31 +562,22 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form>
+						<div>
 							<div class="mb-3">
 								<label for="eventtitle" class="form-label"
 									>Title of Event</label
 								>
-								<input type="text" class="form-control" id="eventtitle" />
+								<input name="title" type="text" class="form-control" id="eventtitle"  minlength="5" maxlength="100" required/>
 							</div>
-							<div class="mb-3">
-								<label for="eventprice" class="form-label">Event Price</label>
-
-								<input type="number" class="form-control" id="eventprice" />
-							</div>
-							<div class="mb-3">
-								<label for="eventorganizer" class="form-label"
-									>Organizer of Event</label
-								>
-								<input type="text" class="form-control" id="eventorganizer" />
-							</div>
+							
+							
 							<div class="mb-3">
 								<label for="eventdate" class="form-label">Date of Event</label>
-								<input type="date" class="form-control" id="eventdate" />
+								<input type="date" name="date" class="form-control" id="eventdate" required />
 							</div>
 							<div class="mb-3">
 								<label for="eventtime" class="form-label">Event Timing</label>
-								<input type="time" class="form-control" id="eventtime" />
+								<input type="time" name="time" class="form-control" id="eventtime" required/>
 							</div>
 							<div class="mb-3">
 								<label for="eventdesc" class="form-label"
@@ -1003,17 +586,38 @@
 								<textarea
 									class="form-control"
 									id="eventdesc"
+									name="desc"
 									rows="3"
+									minlength="10"
+									maxlength="100"
+									required
 								></textarea>
+							</div>
+							<div class="mb-3">
+								<label for="eventadd" class="form-label"
+									>Address</label
+								>
+								<textarea
+									class="form-control"
+									id="eventadd"
+									name="add"
+									rows="2"
+									required
+									minlength="10"
+									maxlength="100"
+								></textarea>
+							</div>
+							<div class="mb-3">
+								<label for="zipcode" class="form-label">Zip code</label>
+								<input type="number" name="zipcode" class="form-control" id="zipcode" required/>
 							</div>
 							<div class="mb-3">
 								<label for="productdesc" class="form-label"
 									>Type of Property</label
 								>
-								<select class="custom-select custom-select-lg mb-3 ml-4">
-									<option selected>Open this select menu</option>
-									<option value="1">For Rent</option>
-									<option value="2">For Sell</option>
+								<select name="type" class="custom-select custom-select-lg mb-3 ml-4" required>
+									<option value="rent">For Rent</option>
+									<option value="sell">For Sell</option>
 								</select>
 							</div>
 							<div>
@@ -1022,6 +626,7 @@
 										src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
 										alt="example placeholder"
 										style="width: 300px"
+										id="preview-selected-image"
 									/>
 								</div>
 								<div class="d-flex justify-content-center">
@@ -1033,23 +638,26 @@
 											type="file"
 											class="form-control d-none"
 											id="customFile1"
+											name="imagefile"
+											accept="image/*"
 										/>
 									</div>
 								</div>
 							</div>
-						</form>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button
 							type="button"
 							class="btn btn-secondary"
 							data-dismiss="modal"
+							
 						>
 							Close
 						</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+						<button type="submit" id="sub-btn" class="btn btn-primary">Save changes</button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 		<!-- Modal end -->
@@ -1075,5 +683,7 @@
 
 		<!-- Template Javascript -->
 		<script src="js/main.js"></script>
+		<script src="/js/header.js"></script>
+		<script src="/js/event.js"></script>
 	</body>
 </html>
