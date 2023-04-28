@@ -21,17 +21,6 @@
 		$("#post-sub-btn").prop("disabled", false);
 	}
 
-	function setSearchLoading(bool = true) {
-		if (bool) {
-			$("#event-search-btn").text("Loading...");
-			$("#event-search-btn").prop("disabled", true);
-			return;
-		}
-
-		$("#event-search-btn").text("Search");
-		$("#event-search-btn").prop("disabled", false);
-	}
-
 	//request on submit handler
 	$("#request-pro-form").on("submit", (e) => {
 		e.preventDefault();
@@ -136,7 +125,7 @@
 				} else {
 					data.forEach((obj) => {
 						htmlString += `<div class="fb-post">
-								<div class="fb-post-header">
+								<div id="post-${obj.pro_id}" class="fb-post-header">
 									<img
 										src="/img/user-profile.png"
 										alt="Profile Picture"
@@ -145,7 +134,11 @@
 										<h3>${obj.name}</h3>
 										<p>Posted on ${window.moment(obj.pro_posted).format("DD MMM, YYYY hh:mm A")}</p>
 									</div>
+									<a class="fb-post-header-text">• wants to ${
+										obj.selling_type === "buyer" ? "Buy" : "Sell"
+									}</a>
 								</div>
+								
 								<div class="fb-post-content">
 									<p>
 										${obj.pro_desc}
@@ -158,9 +151,16 @@
 									<!-- <button>Like</button> 
                       <button>Comment</button> 
                       <button>Share</button>  -->
-									<a href="" class="btn btn-primary px-3 w-100">
+									<a id="btn-${obj.pro_id}" href="#post-${obj.pro_id}" onclick="sendAlert(${
+							obj.user_id
+						},${obj.pro_id}, '${
+							obj.selling_type
+						}')" class="btn btn-primary px-3 w-100">
 										<i class="fa fa-envelope text-primary me-2"></i>Contact
-										${obj.selling_type.charAt(0).toUpperCase() + obj.selling_type.slice(1)}
+										<span>${
+											obj.selling_type.charAt(0).toUpperCase() +
+											obj.selling_type.slice(1)
+										}</span>
 									</a>
 								</div>
 							</div>`;
@@ -202,3 +202,45 @@ imagePostInput.onchange = function name(event) {
 		imagePreviewElement.src = imageSrc;
 	}
 };
+
+async function sendAlert(user_id, pro_id, seller_type) {
+	if (!isLoggedin()) {
+		alert("You must be logged in!!");
+		return;
+	}
+
+	const seller_type_text =
+		seller_type.charAt(0).toUpperCase() + seller_type.slice(1);
+	const btn = document.getElementById("btn-" + pro_id);
+
+	function setLoading(bool = true) {
+		if (bool) {
+			btn.innerText = "loading..";
+		} else {
+			btn.innerText = "Contact " + seller_type_text;
+		}
+	}
+
+	setLoading(true);
+
+	fetch("/api/alert?pro_id=" + pro_id + "&token=" + getToken(), {
+		method: "POST",
+		body: {},
+	})
+		.then(async (res) => {
+			const body = await res.json();
+
+			if (!res.ok) {
+				alert(body.message || "Something went wrong!");
+				setLoading(false);
+				return;
+			}
+
+			alert(seller_type + " will cantact you soon!!");
+			setLoading(false);
+		})
+		.catch((e) => {
+			alert("Something went wrong");
+			setLoading(false);
+		});
+}

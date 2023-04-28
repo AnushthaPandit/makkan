@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 
 const pool = require("./libs/pool");
 const upload = require("./libs/multer");
+const mail = require("./libs/nodemailer");
 
 const authMiddleware = require("./middlewares/auth.middleware");
 
@@ -229,6 +230,34 @@ router.get("/api/products", async (req, res) => {
 	});
 
 	res.send(rows);
+});
+
+router.post("/api/alert", authMiddleware, async (req, res) => {
+	const { pro_id } = req.query;
+
+	const { rows: proRows } = await pool.query({
+		text: "SELECT * FROM products WHERE pro_id=$1",
+		values: [pro_id],
+	});
+
+	const pro_details = proRows[0];
+
+	const { rows: userRows } = await pool.query({
+		text: "SELECT * FROM users WHERE id=$1",
+		values: [req.user.id],
+	});
+
+	const user_details = userRows[0];
+
+	// console.log(user_details.email + pro_details.pro_title);
+
+	await mail(
+		user_details.email,
+		`${user_details.name} wants to connect to you on indio!`,
+		`${user_details.name} has shown interest in ${pro_details.pro_title}`
+	);
+
+	res.status(200).send({});
 });
 
 // Use the router for all API routes
