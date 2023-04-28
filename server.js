@@ -121,7 +121,7 @@ router.get("/api/events", async (req, res) => {
 
 	if (zipcode) {
 		const { rows } = await pool.query({
-			text: "SELECT * FROM events INNER JOIN users ON events.user_id=users.id WHERE zipcode=$1",
+			text: "SELECT events.*, users.name FROM events INNER JOIN users ON events.user_id=users.id WHERE zipcode=$1",
 			values: [zipcode],
 		});
 
@@ -136,8 +136,59 @@ router.get("/api/events", async (req, res) => {
 	res.send(rows);
 });
 
-router.delete("/api/users/:id", (req, res) => {
-	// Handle API request to delete a user with the specified ID
+router.post(
+	"/api/properties",
+	authMiddleware,
+	upload.single("imagefile"),
+	async (req, res) => {
+		const body = req.body;
+
+		//formating body obj
+		const entries = Object.entries(body);
+		const bodyObj = Object.fromEntries(entries);
+
+		const image_path = "/uploads/" + req.file.filename;
+
+		console.log(bodyObj);
+		console.log(image_path);
+
+		await pool.query({
+			text: "INSERT INTO properties(prop_title, prop_desc, prop_price, prop_size_ft, address, image_path, user_id, property_type, zipcode) VALUES($1,$2,$3,$4,$5,$6,$7, $8, $9)",
+			values: [
+				bodyObj.title,
+				bodyObj.desc,
+				bodyObj.price,
+				bodyObj.prop_size,
+				bodyObj.address,
+				image_path,
+				req.user.id,
+				body.type,
+				body.zipcode,
+			],
+		});
+
+		res.status(200).send({ message: "successfully inserted!" });
+	}
+);
+
+router.get("/api/properties", async (req, res) => {
+	const zipcode = req.query.zipcode;
+
+	if (zipcode) {
+		const { rows } = await pool.query({
+			text: "SELECT * FROM properties INNER JOIN users ON properties.user_id=users.id WHERE zipcode=$1",
+			values: [zipcode],
+		});
+
+		res.send(rows);
+		return;
+	}
+
+	const { rows } = await pool.query({
+		text: "SELECT properties.*, users.name FROM properties INNER JOIN users ON properties.user_id=users.id",
+	});
+
+	res.send(rows);
 });
 
 // Use the router for all API routes
