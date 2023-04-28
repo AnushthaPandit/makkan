@@ -113,7 +113,7 @@
 					});
 				}
 
-				$("#tab-1").html(htmlString);
+				$("#event-rows").html(htmlString);
 			}
 			setSearchLoading(false);
 		});

@@ -136,7 +136,7 @@
 					});
 				}
 
-				$("#tab-1").html(htmlString);
+				$("#prop-rows").html(htmlString);
 			}
 			setSearchLoading(false);
 		});
