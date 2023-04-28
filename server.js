@@ -191,6 +191,46 @@ router.get("/api/properties", async (req, res) => {
 	res.send(rows);
 });
 
+router.post(
+	"/api/products",
+	authMiddleware,
+	upload.single("imagefile"),
+	async (req, res) => {
+		const body = req.body;
+
+		//formating body obj
+		const entries = Object.entries(body);
+		const bodyObj = Object.fromEntries(entries);
+
+		const image_path = "/uploads/" + req.file.filename;
+
+		console.log(bodyObj);
+		console.log(image_path);
+
+		await pool.query({
+			text: "INSERT INTO products(pro_title, pro_desc, prop_price, image_path, user_id, selling_type) VALUES($1,$2,$3,$4,$5,$6)",
+			values: [
+				bodyObj.title,
+				bodyObj.desc,
+				bodyObj.price,
+				image_path,
+				req.user.id,
+				body.type,
+			],
+		});
+
+		res.status(200).send({ message: "successfully inserted!" });
+	}
+);
+
+router.get("/api/products", async (req, res) => {
+	const { rows } = await pool.query({
+		text: "SELECT products.*, users.name, users.email FROM products INNER JOIN users ON products.user_id=users.id",
+	});
+
+	res.send(rows);
+});
+
 // Use the router for all API routes
 app.use(router);
 

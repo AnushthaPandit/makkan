@@ -131,7 +131,7 @@
 
 					<!-- community section -->
 					<div class="fbback">
-						<div class="center">
+						<div id="post-collec" class="center">
 							<div class="fb-post">
 								<div class="fb-post-header">
 									<img
@@ -342,7 +342,11 @@
 			aria-labelledby="exampleModalCenterTitle"
 			aria-hidden="true"
 		>
-			<div class="modal-dialog modal-dialog-centered" role="document">
+			<form
+				id="post-product-form"
+				class="modal-dialog modal-dialog-centered"
+				role="document"
+			>
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
@@ -361,20 +365,26 @@
 								<label for="producttitle" class="form-label"
 									>Title of Product</label
 								>
-								<input type="text" class="form-control" id="producttitle" />
+								<input
+									type="text"
+									class="form-control"
+									id="producttitle"
+									name="title"
+									required
+								/>
 							</div>
 							<div class="mb-3">
 								<label for="productprice" class="form-label"
 									>Price of Product</label
 								>
 
-								<input type="number" class="form-control" id="productprice" />
-							</div>
-							<div class="mb-3">
-								<label for="productseller" class="form-label"
-									>Seller of Product</label
-								>
-								<input type="text" class="form-control" id="productseller" />
+								<input
+									type="number"
+									name="price"
+									class="form-control"
+									id="productprice"
+									required
+								/>
 							</div>
 							<div class="mb-3">
 								<label for="productdesc" class="form-label"
@@ -384,6 +394,8 @@
 									class="form-control"
 									id="productdesc"
 									rows="3"
+									name="desc"
+									required
 								></textarea>
 							</div>
 							<div>
@@ -392,17 +404,22 @@
 										src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
 										alt="example placeholder"
 										style="width: 300px"
+										id="preview-post-img"
 									/>
 								</div>
 								<div class="d-flex justify-content-center">
 									<div class="btn btn-primary btn-rounded">
-										<label class="form-label text-white m-1" for="customFile1"
+										<label
+											class="form-label text-white m-1"
+											for="customFile1-post"
 											>Choose file</label
 										>
 										<input
 											type="file"
 											class="form-control d-none"
-											id="customFile1"
+											id="customFile1-post"
+											name="imagefile"
+											accept="image/*"
 										/>
 									</div>
 								</div>
@@ -417,10 +434,12 @@
 						>
 							Close
 						</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+						<button type="submit" id="post-sub-btn" class="btn btn-primary">
+							Save changes
+						</button>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 		<!-- Modal end -->
 
@@ -433,7 +452,11 @@
 			aria-labelledby="exampleModalCenterTitle"
 			aria-hidden="true"
 		>
-			<div class="modal-dialog modal-dialog-centered" role="document">
+			<form
+				id="request-pro-form"
+				class="modal-dialog modal-dialog-centered"
+				role="document"
+			>
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLongTitle">
@@ -454,7 +477,13 @@
 								<label for="producttitle" class="form-label"
 									>Name of Product</label
 								>
-								<input type="text" class="form-control" id="producttitle" />
+								<input
+									type="text"
+									name="title"
+									class="form-control"
+									id="producttitle"
+									required
+								/>
 							</div>
 
 							<div class="mb-3">
@@ -465,6 +494,8 @@
 									class="form-control"
 									id="productdesc"
 									rows="3"
+									name="desc"
+									required
 								></textarea>
 							</div>
 							<div>
@@ -473,17 +504,22 @@
 										src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
 										alt="example placeholder"
 										style="width: 300px"
+										id="preview-req-img"
 									/>
 								</div>
 								<div class="d-flex justify-content-center">
 									<div class="btn btn-primary btn-rounded">
-										<label class="form-label text-white m-1" for="customFile1"
+										<label
+											class="form-label text-white m-1"
+											for="customFile1-req"
 											>Choose file</label
 										>
 										<input
 											type="file"
 											class="form-control d-none"
-											id="customFile1"
+											id="customFile1-req"
+											name="imagefile"
+											accept="image/*"
 										/>
 									</div>
 								</div>
@@ -498,10 +534,12 @@
 						>
 							Close
 						</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+						<button type="submit" id="req-sub-btn" class="btn btn-primary">
+							Save changes
+						</button>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 		<!-- Request Modal end -->
 
@@ -512,6 +550,7 @@
 		<script src="lib/easing/easing.min.js"></script>
 		<script src="lib/waypoints/waypoints.min.js"></script>
 		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
 
 		<script
 			src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
@@ -527,5 +566,6 @@
 		<!-- Template Javascript -->
 		<script src="js/main.js"></script>
 		<script src="/js/header.js"></script>
+		<script src="/js/product.js"></script>
 	</body>
 </html>
