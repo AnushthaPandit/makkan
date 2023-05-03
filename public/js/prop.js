@@ -152,7 +152,7 @@
 	today = yyyy + "-" + mm + "-" + dd;
 	$("#eventdate").attr("min", today);
 
-	fetchProps();
+	// fetchProps();
 })(jQuery);
 
 const imageInput = document.getElementById("customFile1");

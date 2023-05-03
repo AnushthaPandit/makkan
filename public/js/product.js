@@ -172,7 +172,7 @@
 		});
 	};
 
-	fetchProducts();
+	// fetchProducts();
 })(jQuery);
 
 const imageReqInput = document.getElementById("customFile1-req");
