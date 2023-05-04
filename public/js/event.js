@@ -108,6 +108,8 @@
 												>${obj.address}, ${obj.zipcode}
 											</p>
 										</div>
+
+										<button id="btn-${obj.event_id}" class="btn btn-large btn-block btn-primary m-3" style="width:90%" onclick="sendAlert(${obj.event_id})" >Contact</button>
 										
 									</div>
 								</div>`;
@@ -129,7 +131,7 @@
 	today = yyyy + "-" + mm + "-" + dd;
 	$("#eventdate").attr("min", today);
 
-	// fetchEvents();
+	fetchEvents();
 })(jQuery);
 
 const imageInput = document.getElementById("customFile1");
@@ -148,3 +150,43 @@ imageInput.onchange = function name(event) {
 		imagePreviewElement.src = imageSrc;
 	}
 };
+
+async function sendAlert(event_id) {
+	if (!isLoggedin()) {
+		alert("You must be logged in!!");
+		return;
+	}
+
+	const btn = document.getElementById("btn-" + event_id);
+
+	function setLoading(bool = true) {
+		if (bool) {
+			btn.innerText = "loading..";
+		} else {
+			btn.innerText = "Contact";
+		}
+	}
+
+	setLoading(true);
+
+	fetch("/api/alert/events?event_id=" + event_id + "&token=" + getToken(), {
+		method: "POST",
+		body: {},
+	})
+		.then(async (res) => {
+			const body = await res.json();
+
+			if (!res.ok) {
+				alert(body.message || "Something went wrong!");
+				setLoading(false);
+				return;
+			}
+
+			alert("seller will cantact you soon!!");
+			setLoading(false);
+		})
+		.catch((e) => {
+			alert("Something went wrong");
+			setLoading(false);
+		});
+}

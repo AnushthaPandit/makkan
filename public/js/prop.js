@@ -132,6 +132,14 @@
 												Bath</small
 											>
 										</div>
+										<button
+											class="btn btn-large btn-block btn-primary m-3"
+											style="width: 90%"
+											id='btn-${obj.prop_id}'
+											onclick="sendAlert(${obj.prop_id})"
+										>
+											Contact
+										</button>
 									</div>
 								</div>`;
 					});
@@ -152,7 +160,7 @@
 	today = yyyy + "-" + mm + "-" + dd;
 	$("#eventdate").attr("min", today);
 
-	// fetchProps();
+	fetchProps();
 })(jQuery);
 
 const imageInput = document.getElementById("customFile1");
@@ -171,3 +179,43 @@ imageInput.onchange = function name(event) {
 		imagePreviewElement.src = imageSrc;
 	}
 };
+
+async function sendAlert(prop_id) {
+	if (!isLoggedin()) {
+		alert("You must be logged in!!");
+		return;
+	}
+
+	const btn = document.getElementById("btn-" + prop_id);
+
+	function setLoading(bool = true) {
+		if (bool) {
+			btn.innerText = "loading..";
+		} else {
+			btn.innerText = "Contact";
+		}
+	}
+
+	setLoading(true);
+
+	fetch("/api/alert/prop?prop_id=" + prop_id + "&token=" + getToken(), {
+		method: "POST",
+		body: {},
+	})
+		.then(async (res) => {
+			const body = await res.json();
+
+			if (!res.ok) {
+				alert(body.message || "Something went wrong!");
+				setLoading(false);
+				return;
+			}
+
+			alert("seller will cantact you soon!!");
+			setLoading(false);
+		})
+		.catch((e) => {
+			alert("Something went wrong");
+			setLoading(false);
+		});
+}
