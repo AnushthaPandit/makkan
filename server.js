@@ -260,6 +260,60 @@ router.post("/api/alert", authMiddleware, async (req, res) => {
 	res.status(200).send({});
 });
 
+router.post("/api/alert/prop", authMiddleware, async (req, res) => {
+	const { prop_id } = req.query;
+
+	const { rows: proRows } = await pool.query({
+		text: "SELECT * FROM properties WHERE prop_id=$1",
+		values: [prop_id],
+	});
+
+	const pro_details = proRows[0];
+
+	const { rows: userRows } = await pool.query({
+		text: "SELECT * FROM users WHERE id=$1",
+		values: [req.user.id],
+	});
+
+	const user_details = userRows[0];
+
+	// console.log(user_details.email + pro_details.pro_title);
+
+	await mail(
+		user_details.email,
+		`${user_details.name} wants to connect to you on indio!`,
+		`${user_details.name} has shown interest in ${pro_details.prop_title}`
+	);
+
+	res.status(200).send({});
+});
+
+router.post("/api/alert/events", authMiddleware, async (req, res) => {
+	const { event_id } = req.query;
+
+	const { rows: proRows } = await pool.query({
+		text: "SELECT * FROM events WHERE event_id=$1",
+		values: [event_id],
+	});
+
+	const event_details = proRows[0];
+
+	const { rows: userRows } = await pool.query({
+		text: "SELECT * FROM users WHERE id=$1",
+		values: [req.user.id],
+	});
+
+	const user_details = userRows[0];
+
+	await mail(
+		user_details.email,
+		`${user_details.name} wants to connect to you on indio!`,
+		`${user_details.name} has shown interest in ${event_details.event_title}`
+	);
+
+	res.status(200).send({});
+});
+
 // Use the router for all API routes
 app.use(router);
 
